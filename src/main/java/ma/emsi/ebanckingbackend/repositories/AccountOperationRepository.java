@@ -1,8 +1,16 @@
 package ma.emsi.ebanckingbackend.repositories;
 
 import ma.emsi.ebanckingbackend.entities.AccountOperation;
-import ma.emsi.ebanckingbackend.entities.Customer;
+import ma.emsi.ebanckingbackend.entities.BankAccount;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+
+import java.util.List;
+
 public interface AccountOperationRepository extends JpaRepository<AccountOperation,Long> {
+    public List<AccountOperation> findByBankAccountId(String accountId);
+    Page<AccountOperation> findByBankAccountId(String accountId, Pageable pageable);
 }
