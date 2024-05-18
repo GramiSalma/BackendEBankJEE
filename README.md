@@ -38,17 +38,41 @@ Compte et Operation : Un compte peut avoir plusieurs opérations, d'où la relat
 <img src="./captures/img_6.png">
 
 
+<h4>Interface de Swagger</h4>
+<p></p>
 <img src="./captures/img_7.png">
+<h4>Get avec Swagger</h4>
+<p></p>
 <img src="./captures/img_8.png">
+<h4>Les differents Requests de mon application</h4>
+<p></p>
 <img src="./captures/img_9.png">
+<h4>Get customer by Id aveec Swagger</h4>
+<p></p>
 <img src="./captures/img_10.png">
+<h4>Post avec Swagger</h4>
+<p></p>
 <img src="./captures/img_11.png">
+<h4>Resultata de Post</h4>
+<p></p>
 <img src="./captures/img_12.png">
+<h4>Aps-docs des donnees json de mon application</h4>
+<p></p>
 <img src="./captures/img_13.png">
+<h4>Get account By id </h4>
+<p></p>
 <img src="./captures/img_14.png">
+<h4></h4>
+<p>Selectionner les ooperations d'un compte </p>
 <img src="./captures/img_15.png">
+<h4>Consulter une page parmis les operations (par defaout page 0)</h4>
+<p></p>
 <img src="./captures/img_16.png">
+<h4>Selectionner la page 1 des operations </h4>
+<p></p>
 <img src="./captures/img_17.png">
+<h4>Preciser le nombre des operations par page </h4>
+<p></p>
 <img src="./captures/img_18.png">
 
 <h4>En résumé, cette approche permet de :
