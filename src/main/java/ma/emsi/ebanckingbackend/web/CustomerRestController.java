@@ -47,19 +47,7 @@ public class CustomerRestController {
     }
 
 
-    @GetMapping("/accounts/{accountId}/operations")
-    public List<AccountOperationDTO> getHistory(@PathVariable String accountId){
-        return bankAccountService.accountHistory(accountId);
-    }
 
-    @GetMapping("/accounts/{accountId}/pageOperations")
-    public AccountHistoryDTO getAccountHistory(
-            @PathVariable String accountId,
-            @RequestParam(name="page",defaultValue = "0")int page,
-            @RequestParam (name="size",defaultValue = "5")int size) throws BankAccountNotFoundException {
-
-        return bankAccountService.getAccountHistory(accountId,page,size);
-    }
 
 
 

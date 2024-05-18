@@ -68,7 +68,6 @@ public class EbanckingBackendApplication {
             }
         };
     }
-
     //@Bean
     CommandLineRunner start(CustomerRepository customerRepository,
 

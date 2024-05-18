@@ -2,10 +2,7 @@ package ma.emsi.ebanckingbackend.web;
 
 
 import lombok.AllArgsConstructor;
-import ma.emsi.ebanckingbackend.dtos.BankAccountDTO;
-import ma.emsi.ebanckingbackend.dtos.CreditDTO;
-import ma.emsi.ebanckingbackend.dtos.DebitDTO;
-import ma.emsi.ebanckingbackend.dtos.TransferRequestDTO;
+import ma.emsi.ebanckingbackend.dtos.*;
 import ma.emsi.ebanckingbackend.exceptions.BalanceNotSufficientException;
 import ma.emsi.ebanckingbackend.exceptions.BankAccountNotFoundException;
 import ma.emsi.ebanckingbackend.services.BankAccountService;
@@ -29,6 +26,19 @@ import java.util.List;
             return bankAccountService.bankAccountList();
         }
 
+    @GetMapping("/accounts/{accountId}/operations")
+    public List<AccountOperationDTO> getHistory(@PathVariable String accountId){
+        return bankAccountService.accountHistory(accountId);
+    }
+
+    @GetMapping("/accounts/{accountId}/pageOperations")
+    public AccountHistoryDTO getAccountHistory(
+            @PathVariable String accountId,
+            @RequestParam(name="page",defaultValue = "0")int page,
+            @RequestParam (name="size",defaultValue = "5")int size) throws BankAccountNotFoundException {
+
+        return bankAccountService.getAccountHistory(accountId,page,size);
+    }
 
     @PostMapping("/accounts/debit")
     public DebitDTO debit(@RequestBody DebitDTO debitDTO) throws BankAccountNotFoundException, BalanceNotSufficientException {
@@ -40,6 +50,7 @@ import java.util.List;
         this.bankAccountService.credit(creditDTO.getAccountId(),creditDTO.getAmount(),creditDTO.getDescription());
         return creditDTO;
     }
+
     @PostMapping("/accounts/transfer")
     public void transfer(@RequestBody TransferRequestDTO transferRequestDTO) throws BankAccountNotFoundException, BalanceNotSufficientException {
         this.bankAccountService.transfer(
