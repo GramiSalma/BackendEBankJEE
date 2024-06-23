@@ -76,8 +76,6 @@ Compte et Operation : Un compte peut avoir plusieurs opérations, d'où la relat
 <p></p>
 <img src="./captures/img_18.png">
 <h2>La partie de securite avec Spring Security </h2>
-```markdown
-## Résumé de la Configuration de Sécurité Backend avec Spring Security
 
 Pour sécuriser l'application backend de e-banking, j'ai configuré Spring Security pour utiliser les JSON Web Tokens (JWT) pour l'authentification et l'autorisation des utilisateurs. Voici les points clés de cette configuration :
 
