@@ -21,6 +21,7 @@ Compte et Operation : Un compte peut avoir plusieurs opérations, d'où la relat
 <img src="./captures/img_1.png">
 
 
+
 <h3>Test des fonctionnalites BY Postman </h3>
 <h4>Get customers </h4>
 <img src="./captures/img_2.png">
@@ -74,12 +75,46 @@ Compte et Operation : Un compte peut avoir plusieurs opérations, d'où la relat
 <h4>Preciser le nombre des operations par page </h4>
 <p></p>
 <img src="./captures/img_18.png">
+<h2>La partie de securite avec Spring Security </h2>
+```markdown
+## Résumé de la Configuration de Sécurité Backend avec Spring Security
 
-<h4>En résumé, cette approche permet de :
+Pour sécuriser l'application backend de e-banking, j'ai configuré Spring Security pour utiliser les JSON Web Tokens (JWT) pour l'authentification et l'autorisation des utilisateurs. Voici les points clés de cette configuration :
+
+### Annotations de Classe Principales
+- `@Configuration` : Déclare la classe comme source de configuration.
+- `@EnableWebSecurity` : Active la sécurité web de Spring Security.
+- `@EnableMethodSecurity(prePostEnabled = true)` : Permet l'utilisation des annotations de sécurité au niveau des méthodes.
+
+### Gestion des Utilisateurs
+- Utilisation d'un **InMemoryUserDetailsManager** pour stocker les utilisateurs en mémoire avec des mots de passe cryptés à l'aide de BCrypt.
+- Deux utilisateurs sont définis : `user1` avec le rôle `USER` et `admin` avec les rôles `USER` et `ADMIN`.
+
+### Chaîne de Filtrage de Sécurité
+- Configuration de la session en mode sans état (stateless).
+- Désactivation de la protection CSRF.
+- Autorisation des requêtes vers `/auth/login/**` et authentification requise pour toutes les autres requêtes.
+- Configuration du serveur de ressources OAuth2 pour utiliser JWT.
+
+### JWT (JSON Web Tokens)
+- **Encodeur JWT** : Utilisé pour créer des JWT en utilisant une clé secrète.
+- **Décodeur JWT** : Utilisé pour valider les JWT avec l'algorithme HS512.
+
+### CORS (Cross-Origin Resource Sharing)
+- Configuration pour permettre toutes les origines, méthodes et en-têtes, afin de faciliter la communication entre le frontend et le backend.
+
+### Points de Terminaison dans `SecurityController`
+- `@GetMapping("/profile")` : Retourne les détails de l'utilisateur authentifié actuel.
+- `@PostMapping("/login")` : Authentifie l'utilisateur et génère un JWT qui est retourné comme jeton d'accès.
+
+<h4>
+En résumé, cette approche permet de :
 
 Centraliser la gestion des entités : En utilisant une seule table pour les différents types de comptes, nous facilitons la gestion et les modifications futures.
 <br>
 Assurer la cohérence des données : Les relations entre les entités garantissent que chaque opération est correctement associée à un compte et, par extension, à un client.<br>
+garantit une sécurité robuste pour l'application backend, en utilisant JWT pour l'authentification et l'autorisation, tout en permettant une flexibilité avec la configuration CORS.
+<br>
 Optimiser les performances : La stratégie Single Table permet des opérations de requêtes rapides et efficaces, en évitant les jointures complexes entre plusieurs tables.
 <br>
 
